@@ -3,133 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Координаты — Внедрение AI-агентов, ГИС-систем и систем принятия решений</title>
-<meta name="description" content="AI- и ГИС-инженерия: агенты, геоаналитика, CRM с AI, системы принятия решений. Кейсы в фарме, банках, ритейле, телекоме, госсекторе.">
+<title>AI Praxis — Внедрение AI, ГИС и систем принятия решений</title>
+<meta name="description" content="AI-агенты, ГИС-аналитика, CRM с AI, системы принятия решений. Кейсы в фарме, банках, ритейле, телекоме, госсекторе.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d1117'/><text y='68' font-size='48' text-anchor='middle' x='50' fill='%2358a6ff' font-family='Arial' font-weight='bold'>AI</text></svg>">
 <style>
-:root{
+/* THEME SYSTEM */
+:root,[data-theme="dark"]{
 --bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--border:#30363d;
 --text:#e6edf3;--text2:#8b949e;
 --accent:#58a6ff;--green:#3fb950;--orange:#f0883e;--purple:#bc8cff;--yellow:#d29922;
---bg-blue:rgba(88,166,255,0.12);--bg-green:rgba(63,185,80,0.12);
+--bg-accent:rgba(88,166,255,0.12);--bg-green:rgba(63,185,80,0.12);
 --bg-orange:rgba(240,136,62,0.12);--bg-purple:rgba(188,140,255,0.12);--bg-yellow:rgba(210,153,34,0.12);
---fs-xs:11px;--fs-sm:13px;--fs-base:15px;--fs-md:17px;--fs-lg:20px;--fs-xl:28px;--fs-2xl:42px;
---fw-normal:400;--fw-medium:600;--fw-bold:700;
---r-sm:4px;--r-md:8px;--r-lg:12px;
+--nav-bg:rgba(13,17,23,0.85);
 }
+[data-theme="light"]{
+--bg:#ffffff;--surface:#f6f8fa;--surface2:#e1e4e8;--border:#d0d7de;
+--text:#1f2328;--text2:#656d76;
+--accent:#0969da;--green:#1a7f37;--orange:#bc4c00;--purple:#8250df;--yellow:#9a6700;
+--bg-accent:rgba(9,105,218,0.08);--bg-green:rgba(26,127,55,0.08);
+--bg-orange:rgba(188,76,0,0.08);--bg-purple:rgba(130,80,223,0.08);--bg-yellow:rgba(154,103,0,0.08);
+--nav-bg:rgba(255,255,255,0.85);
+}
+[data-theme="midnight"]{
+--bg:#0f0a1e;--surface:#1a1333;--surface2:#241a47;--border:#2d2260;
+--text:#e0d7ff;--text2:#9b8cc4;
+--accent:#a78bfa;--green:#4ade80;--orange:#fb923c;--purple:#c084fc;--yellow:#fbbf24;
+--bg-accent:rgba(167,139,250,0.12);--bg-green:rgba(74,222,128,0.1);
+--bg-orange:rgba(251,146,60,0.1);--bg-purple:rgba(192,132,252,0.12);--bg-yellow:rgba(251,191,36,0.1);
+--nav-bg:rgba(15,10,30,0.85);
+}
+[data-theme="ocean"]{
+--bg:#001220;--surface:#002438;--surface2:#003352;--border:#004870;
+--text:#e0f2fe;--text2:#7dd3fc;
+--accent:#22d3ee;--green:#34d399;--orange:#fb923c;--purple:#a78bfa;--yellow:#fcd34d;
+--bg-accent:rgba(34,211,238,0.1);--bg-green:rgba(52,211,153,0.1);
+--bg-orange:rgba(251,146,60,0.1);--bg-purple:rgba(167,139,250,0.1);--bg-yellow:rgba(252,211,77,0.1);
+--nav-bg:rgba(0,18,32,0.85);
+}
+[data-theme="sunset"]{
+--bg:#1a0a0a;--surface:#2a1212;--surface2:#3a1c1c;--border:#4a2828;
+--text:#fef3c7;--text2:#d4a574;
+--accent:#f59e0b;--green:#84cc16;--orange:#f97316;--purple:#c084fc;--yellow:#eab308;
+--bg-accent:rgba(245,158,11,0.1);--bg-green:rgba(132,204,22,0.1);
+--bg-orange:rgba(249,115,22,0.1);--bg-purple:rgba(192,132,252,0.1);--bg-yellow:rgba(234,179,8,0.1);
+--nav-bg:rgba(26,10,10,0.85);
+}
+[data-theme="forest"]{
+--bg:#0a1a0a;--surface:#13261a;--surface2:#1a3324;--border:#244030;
+--text:#d1fae5;--text2:#86efac;
+--accent:#34d399;--green:#4ade80;--orange:#fb923c;--purple:#a78bfa;--yellow:#fcd34d;
+--bg-accent:rgba(52,211,153,0.1);--bg-green:rgba(74,222,128,0.1);
+--bg-orange:rgba(251,146,60,0.1);--bg-purple:rgba(167,139,250,0.1);--bg-yellow:rgba(252,211,77,0.1);
+--nav-bg:rgba(10,26,10,0.85);
+}
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;font-size:var(--fs-base);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:16px}
-.nav-logo{font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--accent);letter-spacing:-0.5px}
+.nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;gap:16px}
+.nav-logo{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-0.5px}
 .nav-links{display:flex;gap:20px;margin-left:auto}
-.nav-links a{color:var(--text2);font-size:var(--fs-sm);font-weight:var(--fw-medium)}
+.nav-links a{color:var(--text2);font-size:13px;font-weight:600}
 .nav-links a:hover{color:var(--accent);text-decoration:none}
-.nav-cta{background:var(--bg-blue);color:var(--accent);border:1px solid var(--accent);border-radius:var(--r-md);padding:6px 16px;font-size:var(--fs-sm);font-weight:var(--fw-medium)}
+.theme-select{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer}
+.theme-select option{background:var(--surface);color:var(--text)}
+.nav-cta{background:var(--bg-accent);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:6px 16px;font-size:13px;font-weight:600}
 .nav-cta:hover{background:var(--accent);color:var(--bg);text-decoration:none}
 
-/* HERO */
 .hero{max-width:900px;margin:0 auto;padding:80px 24px 60px;text-align:center}
-.hero-badge{display:inline-block;background:var(--bg-green);color:var(--green);border:1px solid rgba(63,185,80,0.3);border-radius:20px;padding:4px 14px;font-size:var(--fs-xs);font-weight:var(--fw-medium);margin-bottom:24px}
-.hero h1{font-size:var(--fs-2xl);font-weight:var(--fw-bold);line-height:1.15;margin-bottom:20px;background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{font-size:var(--fs-md);color:var(--text2);max-width:600px;margin:0 auto 32px;line-height:1.7}
+.hero-badge{display:inline-block;background:var(--bg-green);color:var(--green);border:1px solid rgba(128,128,128,0.2);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:600;margin-bottom:24px}
+.hero h1{font-size:42px;font-weight:700;line-height:1.15;margin-bottom:20px;background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:17px;color:var(--text2);max-width:600px;margin:0 auto 32px;line-height:1.7}
 .hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:40px}
 .hero-stat{text-align:center}
-.hero-stat-num{font-size:var(--fs-xl);font-weight:var(--fw-bold);color:var(--accent)}
-.hero-stat-label{font-size:var(--fs-xs);color:var(--text2);text-transform:uppercase;letter-spacing:1px}
+.hero-stat-num{font-size:28px;font-weight:700;color:var(--accent)}
+.hero-stat-label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:1px}
 .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:var(--bg);border:none;border-radius:var(--r-md);padding:12px 28px;font-size:var(--fs-base);font-weight:var(--fw-bold);cursor:pointer;transition:transform .15s}
+.btn-primary{background:var(--accent);color:var(--bg);border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:700;cursor:pointer;transition:transform .15s}
 .btn-primary:hover{transform:translateY(-1px);text-decoration:none}
-.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 28px;font-size:var(--fs-base);font-weight:var(--fw-medium)}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:12px 28px;font-size:15px;font-weight:600}
 .btn-secondary:hover{border-color:var(--accent);text-decoration:none}
 
-/* SECTIONS */
 .section{max-width:900px;margin:0 auto;padding:60px 24px}
-.section-tag{font-size:var(--fs-xs);color:var(--accent);font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
-.section h2{font-size:var(--fs-xl);font-weight:var(--fw-bold);margin-bottom:32px}
-.section-intro{color:var(--text2);font-size:var(--fs-base);margin-bottom:32px;line-height:1.7}
+.section-tag{font-size:11px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:28px;font-weight:700;margin-bottom:32px}
+.section-intro{color:var(--text2);font-size:15px;margin-bottom:32px;line-height:1.7}
 
-/* SERVICES */
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.service-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;transition:border-color .2s}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;transition:border-color .2s}
 .service-card:hover{border-color:var(--accent)}
 .service-icon{font-size:32px;margin-bottom:16px}
-.service-card h3{font-size:var(--fs-md);font-weight:var(--fw-bold);margin-bottom:8px}
-.service-card p{color:var(--text2);font-size:var(--fs-sm);line-height:1.6}
-.service-price{display:inline-block;margin-top:12px;background:var(--bg-green);color:var(--green);border-radius:var(--r-sm);padding:3px 10px;font-size:var(--fs-xs);font-weight:var(--fw-medium)}
+.service-card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.service-card p{color:var(--text2);font-size:13px;line-height:1.6}
+.service-price{display:inline-block;margin-top:12px;background:var(--bg-green);color:var(--green);border-radius:4px;padding:3px 10px;font-size:11px;font-weight:600}
 
-/* CASES */
-.case{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-bottom:16px}
+.case{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:16px}
 .case-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.case-badge{background:var(--bg-blue);color:var(--accent);border-radius:var(--r-sm);padding:3px 10px;font-size:var(--fs-xs);font-weight:var(--fw-medium)}
+.case-badge{background:var(--bg-accent);color:var(--accent);border-radius:4px;padding:3px 10px;font-size:11px;font-weight:600}
 .case-badge.green{background:var(--bg-green);color:var(--green)}
 .case-badge.orange{background:var(--bg-orange);color:var(--orange)}
 .case-badge.purple{background:var(--bg-purple);color:var(--purple)}
 .case-badge.yellow{background:var(--bg-yellow);color:var(--yellow)}
-.case h3{font-size:var(--fs-md);font-weight:var(--fw-bold)}
-.case p{color:var(--text2);font-size:var(--fs-sm);margin-top:8px}
+.case h3{font-size:17px;font-weight:700}
+.case p{color:var(--text2);font-size:13px;margin-top:8px}
 .case-result{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:24px;flex-wrap:wrap}
 .case-metric{text-align:center}
-.case-metric-num{font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--green)}
-.case-metric-label{font-size:var(--fs-xs);color:var(--text2)}
+.case-metric-num{font-size:20px;font-weight:700;color:var(--green)}
+.case-metric-label{font-size:11px;color:var(--text2)}
 
-/* GIS */
 .gis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.gis-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px}
-.gis-card h4{font-size:var(--fs-base);font-weight:var(--fw-bold);margin-bottom:8px}
-.gis-card p{color:var(--text2);font-size:var(--fs-sm);line-height:1.6}
+.gis-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+.gis-card h4{font-size:15px;font-weight:700;margin-bottom:8px}
+.gis-card p{color:var(--text2);font-size:13px;line-height:1.6}
 .gis-tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
-.gis-tag{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);padding:2px 8px;font-size:var(--fs-xs);color:var(--text2)}
+.gis-tag{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:11px;color:var(--text2)}
 
-/* SAAS */
-.saas-block{background:var(--surface);border:1px solid var(--accent);border-radius:var(--r-lg);padding:32px;margin-bottom:16px}
-.saas-block h3{font-size:var(--fs-md);font-weight:var(--fw-bold);margin-bottom:12px;color:var(--accent)}
-.saas-block p{color:var(--text2);font-size:var(--fs-sm);line-height:1.7}
+.saas-block{background:var(--surface);border:1px solid var(--accent);border-radius:12px;padding:32px;margin-bottom:16px}
+.saas-block h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--accent)}
+.saas-block p{color:var(--text2);font-size:13px;line-height:1.7}
 .saas-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
-.saas-feature{background:var(--surface2);border-radius:var(--r-md);padding:16px}
-.saas-feature h5{font-size:var(--fs-sm);font-weight:var(--fw-bold);margin-bottom:4px}
-.saas-feature p{font-size:var(--fs-xs);color:var(--text2)}
+.saas-feature{background:var(--surface2);border-radius:8px;padding:16px}
+.saas-feature h5{font-size:13px;font-weight:700;margin-bottom:4px}
+.saas-feature p{font-size:11px;color:var(--text2)}
 
-/* STACK */
 .stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.stack-cat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px}
-.stack-cat h4{font-size:var(--fs-sm);color:var(--accent);font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.stack-cat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px}
+.stack-cat h4{font-size:13px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
 .stack-list{list-style:none}
-.stack-list li{padding:4px 0;font-size:var(--fs-sm);color:var(--text);border-bottom:1px solid var(--surface2)}
+.stack-list li{padding:4px 0;font-size:13px;color:var(--text);border-bottom:1px solid var(--surface2)}
 .stack-list li:last-child{border-bottom:none}
 
-/* CONTACT */
-.contact{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:48px;text-align:center}
+.contact{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:48px;text-align:center}
 .contact h2{margin-bottom:16px}
 .contact p{color:var(--text2);margin-bottom:24px}
 .contact-channels{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.contact-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-md);padding:16px 24px;text-decoration:none!important;transition:border-color .2s}
+.contact-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px 24px;text-decoration:none!important;transition:border-color .2s}
 .contact-card:hover{border-color:var(--accent)}
 .contact-card .icon{font-size:24px}
-.contact-card .label{font-size:var(--fs-xs);color:var(--text2);margin-top:4px}
-.contact-card .value{font-size:var(--fs-sm);color:var(--text);font-weight:var(--fw-medium)}
+.contact-card .label{font-size:11px;color:var(--text2);margin-top:4px}
+.contact-card .value{font-size:13px;color:var(--text);font-weight:600}
 
-/* FOOTER */
-.footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--text2);font-size:var(--fs-xs)}
+.footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--text2);font-size:11px}
 .footer-links{display:flex;gap:16px;justify-content:center;margin-bottom:12px}
 .footer-links a{color:var(--text2)}
 .footer-links a:hover{color:var(--accent)}
 
-/* RESPONSIVE */
-@media(max-width:640px){.hero h1{font-size:32px}.hero-stats{gap:24px}.nav-links{display:none}.section{padding:40px 16px}.contact{padding:32px 20px}}
+@media(max-width:640px){.hero h1{font-size:32px}.hero-stats{gap:24px}.nav-links{display:none}.section{padding:40px 16px}.contact{padding:32px 20px}.theme-select{display:none}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp .6s ease-out}
 </style>
 </head>
-<body>
+<body data-theme="dark">
 
-<!-- NAV -->
 <nav class="nav">
-<span class="nav-logo">Координаты</span>
+<span class="nav-logo">AI Praxis</span>
 <div class="nav-links">
 <a href="#services">Услуги</a>
 <a href="#cases">Кейсы</a>
@@ -138,19 +168,26 @@ a:hover{text-decoration:underline}
 <a href="#stack">Стек</a>
 <a href="#contact">Контакты</a>
 </div>
+<select class="theme-select" onchange="document.body.setAttribute('data-theme',this.value)">
+<option value="dark">🌙 Тёмная</option>
+<option value="light">☀️ Светлая</option>
+<option value="midnight">🌌 Полночь</option>
+<option value="ocean">🌊 Океан</option>
+<option value="sunset">🌅 Закат</option>
+<option value="forest">🌲 Лес</option>
+</select>
 <a class="nav-cta" href="#contact">Связаться</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero fade-up">
 <span class="hero-badge">Принимаем проекты</span>
 <h1>AI-агенты, ГИС-аналитика<br>и системы принятия решений</h1>
-<p class="hero-sub">Небольшая инженерная команда. Проектируем и внедряем AI-продукты, геоаналитические платформы и системы поддержки решений для фармы, банков, ритейла, телекома и госсектора. Работаем с кодом и данными, а не со слайдами.</p>
+<p class="hero-sub">Команда, которая внедряет искусственный интеллект в бизнес-процессы. От распознавания документов до предиктивной геоаналитики. Работаем с кодом и данными, а не со слайдами.</p>
 <div class="hero-stats">
-<div class="hero-stat"><div class="hero-stat-num">30+</div><div class="hero-stat-label">проектов в AI и геоаналитике</div></div>
-<div class="hero-stat"><div class="hero-stat-num">40+</div><div class="hero-stat-label">AI-сервисов</div></div>
-<div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">ГИС-проектов</div></div>
+<div class="hero-stat"><div class="hero-stat-num">30+</div><div class="hero-stat-label">проектов</div></div>
 <div class="hero-stat"><div class="hero-stat-num">7</div><div class="hero-stat-label">отраслей</div></div>
+<div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">агентских систем</div></div>
+<div class="hero-stat"><div class="hero-stat-num">25+</div><div class="hero-stat-label">лет опыта</div></div>
 </div>
 <div class="hero-cta">
 <a class="btn-primary" href="#contact">Обсудить проект</a>
@@ -158,91 +195,51 @@ a:hover{text-decoration:underline}
 </div>
 </section>
 
-<!-- SERVICES -->
 <section class="section" id="services">
 <div class="section-tag">УСЛУГИ</div>
 <h2>Что мы делаем</h2>
 <div class="services-grid">
 
-<div class="service-card">
-<div class="service-icon">🤖</div>
-<h3>AI-агенты в бизнес-процессы</h3>
-<p>Автономные AI-агенты для обработки документов, принятия решений по закупкам, выплатам, скорингу. Интеграция в существующие процессы без их перестройки.</p>
-<span class="service-price">от 50 000 ₽</span>
-</div>
+<div class="service-card"><div class="service-icon">🤖</div><h3>AI-агенты в бизнес-процессы</h3><p>Автономные AI-агенты для обработки документов, принятия решений по закупкам, выплатам, скорингу. Интеграция в существующие процессы без перестройки.</p><span class="service-price">от 50 000 ₽</span></div>
 
-<div class="service-card">
-<div class="service-icon">📊</div>
-<h3>Системы принятия решений (SaaS)</h3>
-<p>Параметрические модели выбора с весовыми коэффициентами и Байесовской статистикой. Выбор подрядчиков, закупок, стратегии — на данных, не на интуиции.</p>
-<span class="service-price">от 100 000 ₽</span>
-</div>
+<div class="service-card"><div class="service-icon">📊</div><h3>Системы принятия решений (SaaS)</h3><p>Параметрические модели выбора с весовыми коэффициентами. Выбор подрядчиков, закупок, стратегии — на данных, не на интуиции.</p><span class="service-price">от 100 000 ₽</span></div>
 
-<div class="service-card">
-<div class="service-icon">🗺️</div>
-<h3>ГИС-аналитика и геомаркетинг</h3>
-<p>Предиктивная геоаналитика локаций: демография, трафик, конкуренты, инфраструктура. Выбор точек продаж, маршрутизация, оценка территорий.</p>
-<span class="service-price">от 150 000 ₽</span>
-</div>
+<div class="service-card"><div class="service-icon">🗺️</div><h3>ГИС-аналитика и геомаркетинг</h3><p>Предиктивная геоаналитика локаций: демография, трафик, конкуренты, инфраструктура. Выбор точек продаж, маршрутизация, оценка территорий.</p><span class="service-price">от 150 000 ₽</span></div>
 
-<div class="service-card">
-<div class="service-icon">📚</div>
-<h3>Обучение и тренинги</h3>
-<p>Корпоративные программы по AI для принятия решений. Промт-инжиниринг, вайбкодинг, агентные системы. Преподаватели IBS.</p>
-<span class="service-price">от 200 000 ₽ / 2 дня</span>
-</div>
+<div class="service-card"><div class="service-icon">📚</div><h3>Обучение и тренинги</h3><p>Корпоративные программы по AI для принятия решений. Промт-инжиниринг, вайбкодинг, агентные системы.</p><span class="service-price">от 200 000 ₽ / 2 дня</span></div>
 
-<div class="service-card">
-<div class="service-icon">⚡</div>
-<h3>Быстрый прототип</h3>
-<p>Рабочий прототип AI-решения за 1 день. От идеи до работающего приложения. Python, FastAPI, LLM API.</p>
-<span class="service-price">от 30 000 ₽</span>
-</div>
+<div class="service-card"><div class="service-icon">⚡</div><h3>Быстрый прототип</h3><p>Рабочий прототип AI-решения за 1 день. От идеи до работающего приложения.</p><span class="service-price">от 30 000 ₽</span></div>
 
-<div class="service-card">
-<div class="service-icon">🔧</div>
-<h3>CRM с AI</h3>
-<p>Внедрение CRM-систем с AI-аналитикой: скоринг лидов, предсказание оттока, автоматическая квалификация. Интеграция с телефоннией и email.</p>
-<span class="service-price">от 200 000 ₽</span>
-</div>
+<div class="service-card"><div class="service-icon">🔧</div><h3>CRM с AI</h3><p>Внедрение CRM-систем с AI-аналитикой: скоринг лидов, предсказание оттока, автоматическая квалификация. Интеграция с телефонией и email.</p><span class="service-price">от 200 000 ₽</span></div>
 
-<div class="service-card">
-<div class="service-icon">📝</div>
-<h3>Производство контента</h3>
-<p>Массовая генерация описаний товаров, статей, маркетинговых материалов с помощью LLM. Контроль качества на каждом этапе.</p>
-<span class="service-price">от 50 000 ₽</span>
-</div>
+<div class="service-card"><div class="service-icon">📝</div><h3>Производство контента</h3><p>Массовая генерация описаний товаров, статей, маркетинговых материалов с помощью LLM. Контроль качества на каждом этапе.</p><span class="service-price">от 50 000 ₽</span></div>
 
-<div class="service-card">
-<div class="service-icon">🏗️</div>
-<h3>AI-стратегия и аудит</h3>
-<p>Аудит процессов, поиск точек приложения AI, дорожная карта цифровизации. Оценка ROI и unit-экономики.</p>
-<span class="service-price">от 150 000 ₽</span>
-</div>
+<div class="service-card"><div class="service-icon">🏗️</div><h3>AI-стратегия и аудит</h3><p>Аудит процессов, поиск точек приложения AI, дорожная карта цифровизации. Оценка ROI.</p><span class="service-price">от 150 000 ₽</span></div>
+
+<div class="service-card"><div class="service-icon">🔗</div><h3>Интеграции и API</h3><p>Связывание AI-сервисов с существующими системами: ERP, CRM, телефония, платежи. REST/SOAP, вебхуки, очереди.</p><span class="service-price">от 80 000 ₽</span></div>
 
 </div>
 </section>
 
-<!-- CASES -->
 <section class="section" id="cases">
 <div class="section-tag">КЕЙСЫ</div>
 <h2>Результаты по индустриям</h2>
-<p class="section-intro">Ниже — выборка проектов. Некоторые защищены NDA, названия не раскрываем.</p>
+<p class="section-intro">Некоторые проекты защищены NDA, названия не раскрываем.</p>
 
 <div class="case">
-<div class="case-header"><span class="case-badge green">Фарма</span><h3>ГИС-аналитика field-force</h3></div>
-<p>Оптимизация маршрутов медпредставителей, рейтинг аптек и клиник, ROI территорий. H3-геоаналитика с учётом плотности точек продаж и конкурентного окружения. Пилот в трёх городах.</p>
+<div class="case-header"><span class="case-badge green">Фарма</span><h3>ГИС-аналитика фармацевтической отрасли</h3></div>
+<p>Оптимизация маршрутов посещения точек продаж, рейтинг аптек и клиник, оценка территорий. Геоаналитика с учётом плотности точек продаж и конкурентного окружения. Промышленная эксплуатация в нескольких регионах.</p>
 <div class="case-result">
-<div class="case-metric"><div class="case-metric-num">3</div><div class="case-metric-label">города пилота</div></div>
-<div class="case-metric"><div class="case-metric-num">H3</div><div class="case-metric-label">гео-решётка</div></div>
+<div class="case-metric"><div class="case-metric-num">GIS</div><div class="case-metric-label">геоаналитика</div></div>
+<div class="case-metric"><div class="case-metric-num">PROD</div><div class="case-metric-label">промышленная эксплуатация</div></div>
 </div>
 </div>
 
 <div class="case">
 <div class="case-header"><span class="case-badge">Ритейл</span><h3>LLM для маркетплейса</h3></div>
-<p>Автоматическая генерация описаний и характеристик товаров на B2B-маркетплейсе. Полный цикл: от парсинга поставщиков до публикации готовых карточек.</p>
+<p>Автоматическая генерация описаний и характеристик товаров на B2B-маркетплейсе. Полный цикл: от парсинга поставщиков до публикации карточек.</p>
 <div class="case-result">
-<div class="case-metric"><div class="case-metric-num">500K+</div><div class="case-metric-label">SKU обработано</div></div>
+<div class="case-metric"><div class="case-metric-num">500K+</div><div class="case-metric-label">товаров обработано</div></div>
 <div class="case-metric"><div class="case-metric-num">5x</div><div class="case-metric-label">ускорение</div></div>
 </div>
 </div>
@@ -261,7 +258,6 @@ a:hover{text-decoration:underline}
 <p>Автоматический анализ документов и принятие решений по страховым выплатам. Сокращение ручного труда, выявление мошенничества.</p>
 <div class="case-result">
 <div class="case-metric"><div class="case-metric-num">-40%</div><div class="case-metric-label">ручного труда</div></div>
-<div class="case-metric"><div class="case-metric-num">99.9%</div><div class="case-metric-label">точность</div></div>
 </div>
 </div>
 
@@ -270,13 +266,12 @@ a:hover{text-decoration:underline}
 <p>Платформа геолокации для абонентской базы мобильного оператора. GPS-трекинг, определение местоположения, LBS-сервисы федерального масштаба.</p>
 <div class="case-result">
 <div class="case-metric"><div class="case-metric-num">10М+</div><div class="case-metric-label">абонентов</div></div>
-<div class="case-metric"><div class="case-metric-num">$20М</div><div class="case-metric-label">экономический эффект</div></div>
 </div>
 </div>
 
 <div class="case">
-<div class="case-header"><span class="case-badge yellow">Госсектор</span><h3>CRM с AI для госучреждений</h3></div>
-<p>Внедрение CRM-систем с AI-аналитикой в крупнейших государственных учреждениях. Автоматизация обработки обращений граждан, аналитика обращаемости, предиктивные модели нагрузки.</p>
+<div class="case-header"><span class="case-badge yellow">Госсектор</span><h3>CRM с AI для государственных учреждений</h3></div>
+<p>Внедрение CRM-систем с AI-аналитикой в крупнейших государственных учреждениях. Автоматизация обработки обращений, аналитика обращаемости, предиктивные модели нагрузки.</p>
 <div class="case-result">
 <div class="case-metric"><div class="case-metric-num">ГОС</div><div class="case-metric-label">федеральный уровень</div></div>
 <div class="case-metric"><div class="case-metric-num">CRM</div><div class="case-metric-label">+ AI-аналитика</div></div>
@@ -284,102 +279,67 @@ a:hover{text-decoration:underline}
 </div>
 
 <div class="case">
-<div class="case-header"><span class="case-badge orange">Мелкий бизнес</span><h3>Автоматизация точек питания</h3></div>
-<p>Внедрение AI-агентов для автоматизации заказов и учета в сетях быстрого питания. От приёма заказа до инвентаризации.</p>
+<div class="case-header"><span class="case-badge orange">Производство</span><h3>Маршрутизация сервисных инженеров</h3></div>
+<p>Система оптимизации маршрутов для производственной компании с заводами в двух странах. Заявки по приоритету, времени и расстоянию.</p>
 <div class="case-result">
-<div class="case-metric"><div class="case-metric-num">AI</div><div class="case-metric-label">агент для заказов</div></div>
-<div class="case-metric"><div class="case-metric-num">24/7</div><div class="case-metric-label">приём заказов</div></div>
-</div>
-</div>
-
-<div class="case">
-<div class="case-header"><span class="case-badge">Ритейл</span><h3>Маршрутизация сервисных инженеров</h3></div>
-<p>Система маршрутизации сервисных инженеров для производственной компании с заводами в Китае и Москве. Оптимизация по времени, расстоянию и приоритету заявок.</p>
-<div class="case-result">
-<div class="case-metric"><div class="case-metric-num">GIS</div><div class="case-metric-label">оптимизация маршрутов</div></div>
 <div class="case-metric"><div class="case-metric-num">2</div><div class="case-metric-label">страны</div></div>
+<div class="case-metric"><div class="case-metric-num">GIS</div><div class="case-metric-label">оптимизация</div></div>
 </div>
 </div>
 
 </section>
 
-<!-- GIS -->
 <section class="section" id="gis">
 <div class="section-tag">ГИС-ЭКСПЕРТИЗА</div>
 <h2>Геоинформационные системы</h2>
-<p class="section-intro">Шесть проектов в разных индустриях — от телекома до фармы. Полный цикл: от сбора пространственных данных до предиктивных моделей.</p>
+<p class="section-intro">Проекты в разных индустриях — от телекома до фармы. Полный цикл: от сбора пространственных данных до предиктивных моделей.</p>
 <div class="gis-grid">
 
-<div class="gis-card">
-<h4>LBS-платформа мобильного оператора</h4>
-<p>Платформа геолокации для абонентской базы. GPS-трекинг, определение местоположения, LBS-сервисы.</p>
-<div class="gis-tags"><span class="gis-tag">Telco</span><span class="gis-tag">10М+ абонентов</span><span class="gis-tag">GPS</span></div>
-</div>
+<div class="gis-card"><h4>LBS-платформа мобильного оператора</h4><p>Платформа геолокации для абонентской базы. GPS-трекинг, определение местоположения, LBS-сервисы.</p><div class="gis-tags"><span class="gis-tag">Телеком</span><span class="gis-tag">10М+ абонентов</span></div></div>
 
-<div class="gis-card">
-<h4>ГИС выбора локаций офисов</h4>
-<p>Платформа для оценки привлекательности локаций под банковские офисы. Демография, трафик, конкуренты, инфраструктура.</p>
-<div class="gis-tags"><span class="gis-tag">FinTech</span><span class="gis-tag">PropTech</span><span class="gis-tag">геомаркетинг</span></div>
-</div>
+<div class="gis-card"><h4>ГИС выбора локаций офисов</h4><p>Платформа оценки привлекательности локаций. Демография, трафик, конкуренты, инфраструктура.</p><div class="gis-tags"><span class="gis-tag">Финтех</span><span class="gis-tag">PropTech</span></div></div>
 
-<div class="gis-card">
-<h4>B2B SaaS предиктивная геоаналитика</h4>
-<p>Платформа анализа тысяч факторов из OpenStreetMap для оценки ценности локаций. Гибкий инструмент — пользователь контролирует веса.</p>
-<div class="gis-tags"><span class="gis-tag">SaaS</span><span class="gis-tag">GeoPandas</span><span class="gis-tag">H3-py</span><span class="gis-tag">PostGIS</span></div>
-</div>
+<div class="gis-card"><h4>B2B SaaS предиктивная геоаналитика</h4><p>Платформа анализа факторов из OpenStreetMap для оценки ценности локаций. Гибкий инструмент — пользователь контролирует веса.</p><div class="gis-tags"><span class="gis-tag">SaaS</span><span class="gis-tag">GeoPandas</span><span class="gis-tag">PostGIS</span></div></div>
 
-<div class="gis-card">
-<h4>Карта выплат и фрод-аналитика</h4>
-<p>Визуализация аномалий страховых выплат на географических картах. Hotspot-аналитика по регионам.</p>
-<div class="gis-tags"><span class="gis-tag">InsurTech</span><span class="gis-tag">фрод</span><span class="gis-tag">hotspot</span></div>
-</div>
+<div class="gis-card"><h4>Карта выплат и фрод-аналитика</h4><p>Визуализация аномалий страховых выплат на географических картах. Hotspot-аналитика по регионам.</p><div class="gis-tags"><span class="gis-tag">Страхование</span><span class="gis-tag">Антифрод</span></div></div>
 
-<div class="gis-card">
-<h4>Фарма: маршрутизация field-force</h4>
-<p>Оптимизация маршрутов медпредставителей, рейтинг аптек и клиник. H3-геоаналитика территорий.</p>
-<div class="grid-tags"><span class="gis-tag">Pharma</span><span class="gis-tag">NDA</span><span class="gis-tag">H3</span><span class="gis-tag">3 города</span></div>
-</div>
+<div class="gis-card"><h4>Фармацевтическая геоаналитика</h4><p>Оптимизация маршрутов посещения точек продаж, рейтинг аптек и клиник, оценка территорий. Промышленная эксплуатация.</p><div class="gis-tags"><span class="gis-tag">Фарма</span><span class="gis-tag">NDA</span></div></div>
 
-<div class="gis-card">
-<h4>Маршрутизация сервисных инженеров</h4>
-<p>Система оптимизации маршрутов для производственной компании. Заявки по приоритету, времени и расстоянию.</p>
-<div class="gis-tags"><span class="gis-tag">Production</span><span class="gis-tag">маршрутизация</span></div>
-</div>
+<div class="gis-card"><h4>Маршрутизация сервисных инженеров</h4><p>Система оптимизации маршрутов для производственной компании. Заявки по приоритету, времени и расстоянию.</p><div class="gis-tags"><span class="gis-tag">Производство</span><span class="gis-tag">Маршрутизация</span></div></div>
 
 </div>
 </section>
 
-<!-- SAAS -->
 <section class="section" id="saas">
 <div class="section-tag">SAAS</div>
 <h2>Системы принятия решений как сервис</h2>
 <div class="saas-block">
 <h3>Параметрические модели выбора</h3>
-<p>Платформа для принятия многокритериальных решений на данных. Вместо таблиц Excel и совещаний — воспроизводимая модель с весовыми коэффициентами и Байесовской вероятностью.</p>
+<p>Платформа для принятия многокритериальных решений на данных. Вместо таблиц Excel и совещаний — воспроизводимая модель с весовыми коэффициентами.</p>
 <div class="saas-features">
 <div class="saas-feature"><h5>Выбор подрядчика</h5><p>Многокритериальная оценка по цене, сроку, качеству, рискам</p></div>
-<div class="saas-feature"><h5>Закупки</h5><p>Оптимизация корзины закупок с учётом скидок и логистики</p></div>
-<div class="saas-feature"><h5>Стратегия</h5><p>Оценка стратегических альтернатив с весовыми коэффициентами</p></div>
+<div class="saas-feature"><h5>Закупки</h5><p>Оптимизация корзины с учётом скидок и логистики</p></div>
+<div class="saas-feature"><h5>Стратегия</h5><p>Оценка стратегических альтернатив с весами</p></div>
 <div class="saas-feature"><h5>Локации</h5><p>ГИС-интегрированный выбор точек продаж</p></div>
 </div>
 </div>
 </section>
 
-<!-- STACK -->
 <section class="section" id="stack">
 <div class="section-tag">ТЕХНОЛОГИИ</div>
 <h2>Технологический стек</h2>
 <div class="stack-grid">
 
 <div class="stack-cat">
-<h4>LLM и AI</h4>
+<h4>LLM</h4>
 <ul class="stack-list">
-<li>Claude 4 Opus / Sonnet</li>
-<li>GPT-5</li>
-<li>Gemini 2.5 Pro</li>
-<li>Grok 4</li>
-<li>GLM-4.6 / GLM-5</li>
-<li>GigaChat (Yandex)</li>
+<li>Claude</li>
+<li>GPT</li>
+<li>Gemini</li>
+<li>Grok</li>
+<li>GLM</li>
+<li>DeepSeek</li>
+<li>GigaChat</li>
 <li>Fine-tuning</li>
 <li>RAG / Embeddings</li>
 </ul>
@@ -388,14 +348,15 @@ a:hover{text-decoration:underline}
 <div class="stack-cat">
 <h4>Агентные системы</h4>
 <ul class="stack-list">
-<li>Мультиагентная оркестрация</li>
-<li>Hermes Agent (9 систем)</li>
-<li>OpenClaw / OpenCode</li>
+<li>Hermes Agent</li>
 <li>Claude Code</li>
 <li>Cursor</li>
+<li>OpenClaw</li>
+<li>OpenCode</li>
+<li>Windsurf</li>
+<li>Codex</li>
 <li>n8n / Make</li>
 <li>LangChain / LangGraph</li>
-<li>MCP (Model Context Protocol)</li>
 </ul>
 </div>
 
@@ -403,7 +364,6 @@ a:hover{text-decoration:underline}
 <h4>ГИС</h4>
 <ul class="stack-list">
 <li>GeoPandas</li>
-<li>H3-py (гексагональная сетка)</li>
 <li>PostGIS</li>
 <li>Leaflet / Mapbox</li>
 <li>Shapely</li>
@@ -423,14 +383,12 @@ a:hover{text-decoration:underline}
 <li>Supabase / Pinecone</li>
 <li>ERP (1C, Kingdee)</li>
 <li>Vue.js / React</li>
-<li>HTML5 / CSS3</li>
 </ul>
 </div>
 
 </div>
 </section>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
 <div class="contact">
 <div class="section-tag">СВЯЗАТЬСЯ</div>
@@ -439,7 +397,7 @@ a:hover{text-decoration:underline}
 <div class="contact-channels">
 <a class="contact-card" href="https://t.me/Alex1452"><div class="icon">💬</div><div class="label">Telegram</div><div class="value">@Alex1452</div></a>
 <a class="contact-card" href="https://wa.me/79645694970"><div class="icon">📱</div><div class="label">WhatsApp</div><div class="value">+7 (964) 569-49-70</div></a>
-<a class="command-card" href="tel:+79645694970"><div class="icon">📞</div><div class="label">Телефон</div><div class="value">+7 (964) 569-49-70</div></a>
+<a class="contact-card" href="tel:+79645694970"><div class="icon">📞</div><div class="label">Телефон</div><div class="value">+7 (964) 569-49-70</div></a>
 </div>
 </div>
 </section>
@@ -452,7 +410,6 @@ a:hover{text-decoration:underline}
 <a href="#saas">SaaS</a>
 <a href="#stack">Стек</a>
 </div>
-<p>Координаты — AI- и ГИС-инженерия искусственного интеллекта в бизнес-процессы</p>
 </footer>
 
 </body>
