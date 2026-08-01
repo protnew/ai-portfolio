@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- v4.0 1785608507 -->
 <!-- v3.6 1785607085 -->
 <!-- v3.5 deploy 1785606006 -->
 <html lang="ru">
@@ -6,6 +7,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AIGrid — AI-агенты, ГИС-аналитика и системы принятия решений</title>
+<meta property="og:title" content="AIGrid — AI-агенты, ГИС-аналитика и системы принятия решений">
+<meta property="og:description" content="Внедряем AI в бизнес-процессы: AI-агенты, геоаналитика, CRM, обучение. Кейсы в фарме, банках, ритейле, госсекторе.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aigrid.pages.dev/">
+<meta property="og:image" content="https://aigrid.pages.dev/choser-demo.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIGrid — AI, ГИС и системы принятия решений">
+<meta name="twitter:description" content="Внедряем AI в бизнес-процессы: AI-агенты, геоаналитика, CRM, обучение.">
 <meta name="description" content="AI-агенты, ГИС-аналитика, CRM с AI, системы принятия решений. Кейсы в фарме, банках, ритейле, телекоме, госсекторе.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d1117'/><text y='68' font-size='48' text-anchor='middle' x='50' fill='%2358a6ff' font-family='Arial' font-weight='bold'>AI</text></svg>">
 <style>
@@ -137,9 +147,32 @@ a:hover{text-decoration:underline}
 .footer-links a{color:var(--text2)}
 .footer-links a:hover{color:var(--accent)}
 
-@media(max-width:640px){.hero h1{font-size:32px}.hero-stats{gap:24px}.nav-links{display:none}.section{padding:40px 16px}.contact{padding:32px 20px}.theme-select{display:none}}
+.hero-stats{gap:24px}.nav-links{display:none}.section{padding:40px 16px}.contact{padding:32px 20px}.theme-select{display:none}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp .6s ease-out}
+
+@media(max-width:640px){
+.hero h1{font-size:26px}
+.hero-stats{gap:16px}
+.hero-stat-num{font-size:22px}
+.nav-links{display:none}
+.nav{padding:8px 12px}
+.section{padding:32px 14px}
+.section h2{font-size:22px}
+.services-grid{grid-template-columns:1fr}
+.gis-grid{grid-template-columns:1fr}
+.stack-grid{grid-template-columns:1fr}
+.saas-features{grid-template-columns:1fr}
+.case{padding:20px 16px}
+.contact{padding:28px 16px}
+.theme-select{font-size:11px;padding:4px 6px}
+.nav-logo{font-size:17px}
+.service-card{padding:20px}
+.case-result{gap:16px}
+.case-metric-num{font-size:18px}
+img{max-width:100%!important}
+}
+
 </style>
 </head>
 <body data-theme="dark">
@@ -151,6 +184,7 @@ a:hover{text-decoration:underline}
 <a href="#cases">Кейсы</a>
 <a href="#gis">ГИС</a>
 <a href="#saas">SaaS</a>
+<a href="#training">Обучение</a>
 <a href="#team">Команда</a>
 <a href="#contact">Контакты</a>
 </div>
@@ -167,7 +201,7 @@ a:hover{text-decoration:underline}
 <section class="hero fade-up">
 <span class="hero-badge">Принимаем проекты</span>
 <h1>AI-агенты, ГИС-аналитика<br>и системы принятия решений</h1>
-<p class="hero-sub">Три направления, которые обычно покупают у разных подрядчиков. Мы объединили их в одну команду: одни и те же люди проектируют AI-агентов, строят геоаналитику и создают модели для многокритериальных решений. Меньше интеграторов — меньше разрывов между слоями.</p>
+<p class="hero-sub">AI-агенты, геоаналитика и системы принятия решений в одной команде.</p>
 <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px"><span style="background:var(--bg-accent);color:var(--accent);border-radius:4px;padding:4px 12px;font-size:12px;font-weight:600">Фарма</span><span style="background:var(--bg-green);color:var(--green);border-radius:4px;padding:4px 12px;font-size:12px;font-weight:600">Банки</span><span style="background:var(--bg-orange);color:var(--orange);border-radius:4px;padding:4px 12px;font-size:12px;font-weight:600">Ритейл</span><span style="background:var(--bg-purple);color:var(--purple);border-radius:4px;padding:4px 12px;font-size:12px;font-weight:600">Телеком</span><span style="background:var(--bg-yellow);color:var(--yellow);border-radius:4px;padding:4px 12px;font-size:12px;font-weight:600">Госсектор</span></div>
 <div class="hero-stats">
 <div class="hero-stat"><div class="hero-stat-num">30+</div><div class="hero-stat-label">проектов</div></div>
@@ -186,17 +220,17 @@ a:hover{text-decoration:underline}
 <h2>Что мы делаем</h2>
 <div class="services-grid">
 
-<div class="service-card"><div class="service-icon">🤖</div><h3>AI-агенты в бизнес-процессы</h3><p>Автономные AI-агенты для обработки документов, принятия решений по закупкам, выплатам, скорингу. Интеграция в существующие процессы: ERP, CRM, телефония. Без перестройки.</p><span class="service-price">от 150 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">🤖</div><h3>AI-агенты в бизнес-процессы</h3><p>Автономные AI-агенты для обработки документов, принятия решений по закупкам, выплатам, скорингу. Интеграция в существующие процессы: ERP, CRM, телефония. Без перестройки.</p></div>
 
-<div class="service-card"><div class="service-icon">📊</div><h3>Системы принятия решений (SaaS)</h3><p>Параметрические модели выбора с весовыми коэффициентами. Выбор подрядчиков, закупок, стратегии — на данных, не на интуиции.</p><span class="service-price">от 100 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">📊</div><h3>Системы принятия решений (SaaS)</h3><p>Параметрические модели выбора с весовыми коэффициентами. Выбор подрядчиков, закупок, стратегии — на данных, не на интуиции.</p></div>
 
-<div class="service-card"><div class="service-icon">⚡</div><h3>Быстрый прототип</h3><p>Рабочий прототип AI-решения за 1 день. От идеи до работающего приложения.</p><span class="service-price">от 70 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">⚡</div><h3>Быстрый прототип</h3><p>Рабочий прототип AI-решения за 1 день. От идеи до работающего приложения.</p></div>
 
-<div class="service-card"><div class="service-icon">🔧</div><h3>CRM с AI</h3><p>Внедрение CRM-систем с AI-аналитикой: скоринг лидов, предсказание оттока, автоматическая квалификация. Интеграция с телефонией и email.</p><span class="service-price">от 200 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">🔧</div><h3>CRM с AI</h3><p>Внедрение CRM-систем с AI-аналитикой: скоринг лидов, предсказание оттока, автоматическая квалификация. Интеграция с телефонией и email.</p></div>
 
-<div class="service-card"><div class="service-icon">📝</div><h3>Производство контента</h3><p>Массовая генерация описаний товаров, статей, маркетинговых материалов с помощью LLM. Контроль качества на каждом этапе.</p><span class="service-price">от 100 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">📝</div><h3>Производство контента</h3><p>Массовая генерация описаний товаров, статей, маркетинговых материалов с помощью LLM. Контроль качества на каждом этапе.</p></div>
 
-<div class="service-card"><div class="service-icon">🏗️</div><h3>AI-стратегия и аудит</h3><p>Аудит процессов, поиск точек приложения AI, дорожная карта цифровизации. Оценка ROI.</p><span class="service-price">от 150 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">🏗️</div><h3>AI-стратегия и аудит</h3><p>Аудит процессов, поиск точек приложения AI, дорожная карта цифровизации. Оценка ROI.</p></div>
 
 </div>
 </section>
@@ -216,11 +250,10 @@ a:hover{text-decoration:underline}
 </div>
 
 <div class="case">
-<div class="case-header"><span class="case-badge">Ритейл</span><h3>LLM для маркетплейса</h3></div>
-<p>Автоматическая генерация описаний и характеристик товаров на B2B-маркетплейсе. Полный цикл: от парсинга поставщиков до публикации карточек.</p>
+<div class="case-header"><span class="case-badge purple">Телеком</span><h3>LBS-платформа</h3></div>
+<p>Платформа геолокации для абонентской базы мобильного оператора. GPS-трекинг, определение местоположения, LBS-сервисы федерального масштаба.</p>
 <div class="case-result">
-<div class="case-metric"><div class="case-metric-num">500K+</div><div class="case-metric-label">товаров обработано</div></div>
-<div class="case-metric"><div class="case-metric-num">5x</div><div class="case-metric-label">ускорение</div></div>
+<div class="case-metric"><div class="case-metric-num">10М+</div><div class="case-metric-label">абонентов</div></div>
 </div>
 </div>
 
@@ -234,28 +267,20 @@ a:hover{text-decoration:underline}
 </div>
 
 <div class="case">
+<div class="case-header"><span class="case-badge">Ритейл</span><h3>LLM для маркетплейса</h3></div>
+<p>Автоматическая генерация описаний и характеристик товаров на B2B-маркетплейсе. Полный цикл: от парсинга поставщиков до публикации карточек.</p>
+<div class="case-result">
+<div class="case-metric"><div class="case-metric-num">500K+</div><div class="case-metric-label">товаров обработано</div></div>
+<div class="case-metric"><div class="case-metric-num">5x</div><div class="case-metric-label">ускорение</div></div>
+</div>
+</div>
+
+<div class="case">
 <div class="case-header"><span class="case-badge green">Страхование</span><h3>AI-урегулирование убытков</h3></div>
 <p>Автоматический анализ документов и принятие решений по страховым выплатам. Сокращение ручного труда, выявление мошенничества.</p>
 <div class="case-result">
 <div class="case-metric"><div class="case-metric-num">-40%</div><div class="case-metric-label">ручного труда</div></div>
 <div class="case-metric"><div class="case-metric-num">x3</div><div class="case-metric-label">скорость обработки</div></div>
-</div>
-</div>
-
-<div class="case">
-<div class="case-header"><span class="case-badge purple">Телеком</span><h3>LBS-платформа</h3></div>
-<p>Платформа геолокации для абонентской базы мобильного оператора. GPS-трекинг, определение местоположения, LBS-сервисы федерального масштаба.</p>
-<div class="case-result">
-<div class="case-metric"><div class="case-metric-num">10М+</div><div class="case-metric-label">абонентов</div></div>
-</div>
-</div>
-
-<div class="case">
-<div class="case-header"><span class="case-badge yellow">Госсектор</span><h3>CRM с AI для государственных учреждений</h3></div>
-<p>Внедрение CRM-систем с AI-аналитикой в крупнейших государственных учреждениях. Автоматизация обработки обращений, аналитика обращаемости, предиктивные модели нагрузки.</p>
-<div class="case-result">
-<div class="case-metric"><div class="case-metric-num">ГОС</div><div class="case-metric-label">федеральный уровень</div></div>
-<div class="case-metric"><div class="case-metric-num">CRM</div><div class="case-metric-label">+ AI-аналитика</div></div>
 </div>
 </div>
 
@@ -268,7 +293,18 @@ a:hover{text-decoration:underline}
 </div>
 </div>
 
-</section>
+<div class="case">
+<div class="case-header"><span class="case-badge yellow">Госсектор</span><h3>CRM с AI для государственных учреждений</h3></div>
+<p>Внедрение CRM-систем с AI-аналитикой в крупнейших государственных учреждениях. Автоматизация обработки обращений, аналитика обращаемости, предиктивные модели нагрузки.</p>
+<div class="case-result">
+<div class="case-metric"><div class="case-metric-num">ГОС</div><div class="case-metric-label">федеральный уровень</div></div>
+<div class="case-metric"><div class="case-metric-num">CRM</div><div class="case-metric-label">+ AI-аналитика</div></div>
+</div>
+</div>
+
+
+
+</section></section>
 
 <section class="section" id="gis">
 <div class="section-tag">ГИС-ЭКСПЕРТИЗА</div>
@@ -303,6 +339,7 @@ a:hover{text-decoration:underline}
 <div class="saas-feature"><h5>Стратегия</h5><p>Оценка стратегических альтернатив с весами</p></div>
 <div class="saas-feature"><h5>Локации</h5><p>ГИС-интегрированный выбор точек продаж</p></div>
 </div>
+<div style="margin-top:24px;text-align:center"><img src="choser-demo.png" alt="Система принятия решений — взвешенные критерии выбора" style="max-width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.3)"><p style="margin-top:8px;color:var(--text2);font-size:12px">Пример интерфейса: критерии выбора с настраиваемыми весами</p></div>
 </div>
 </section>
 
@@ -370,6 +407,18 @@ a:hover{text-decoration:underline}
 </div>
 </section>
 
+
+<section class="section" id="training">
+<div class="section-tag">ОБУЧЕНИЕ</div>
+<h2>Программы обучения</h2>
+<p class="section-intro">Готовые материалы и программы. Адаптация под отрасль клиента.</p>
+<div class="services-grid">
+<div class="service-card"><div class="service-icon">📚</div><h3>AI для принятия решений</h3><p>LLM для анализа данных и поддержки решений. Промт-инжиниринг, RAG, агентные системы. 16 академических часов.</p></div>
+<div class="service-card"><div class="service-icon">🎓</div><h3>Нейросети против иллюзий</h3><p>Где AI работает, а где — маркетинговая пыль. Разбор кейсов, антипаттерны, оценка ROI. 8 часов.</p></div>
+<div class="service-card"><div class="service-icon">⚡</div><h3>Вайбкодинг</h3><p>Практикум по разработке с AI-агентами. Команда клиента учится строить сервисы с Hermes, Cursor, Claude Code. 24 часа практики.</p></div>
+</div>
+</section>
+
 <section class="section" id="team">
 <div class="section-tag">КОМАНДА</div>
 <h2>Кто будет работать над вашим проектом</h2>
@@ -388,7 +437,6 @@ a:hover{text-decoration:underline}
 <div class="section-tag">СВЯЗАТЬСЯ</div>
 <h2>Готовы обсудить ваш проект</h2>
 <p>AI-агенты, ГИС-аналитика, CRM, системы принятия решений.</p>
-<p style="margin-top:12px"><a href="mailto:contact@aigrid.dev" style="font-size:15px;font-weight:600">contact@aigrid.dev</a></p>
 <div class="contact-channels">
 <a class="contact-card" href="https://t.me/Alex1452"><div class="icon">💬</div><div class="label">Telegram</div><div class="value">@Alex1452</div></a>
 <a class="contact-card" href="https://wa.me/79645694970"><div class="icon">📱</div><div class="label">WhatsApp</div><div class="value">+7 (964) 569-49-70</div></a>
