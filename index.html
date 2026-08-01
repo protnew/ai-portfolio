@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Алексей Шеховцов — AI-архитектор, CIO, вайбкодер</title>
+<meta name="description" content="Внедрение AI в бизнес-процессы. Обучение, консалтинг, разработка AI-агентов, принятие оптимальных решений. 25 лет опыта.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d1117'/><text y='72' font-size='60' text-anchor='middle' x='50' fill='%2358a6ff' font-family='Arial' font-weight='bold'>A</text></svg>">
+<style>
+:root{
+--bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--border:#30363d;
+--text:#e6edf3;--text2:#8b949e;
+--accent:#58a6ff;--green:#3fb950;--red:#f85149;--yellow:#d29922;--orange:#f0883e;--purple:#bc8cff;
+--bg-blue:rgba(88,166,255,0.12);--bg-green:rgba(63,185,80,0.12);
+--bg-orange:rgba(240,136,62,0.12);--bg-purple:rgba(188,140,255,0.12);
+--fs-xs:11px;--fs-sm:13px;--fs-base:15px;--fs-md:17px;--fs-lg:20px;--fs-xl:28px;--fs-2xl:42px;
+--fw-normal:400;--fw-medium:600;--fw-bold:700;
+--r-sm:4px;--r-md:8px;--r-lg:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;font-size:var(--fs-base);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:16px}
+.nav-logo{font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--accent)}
+.nav-links{display:flex;gap:20px;margin-left:auto}
+.nav-links a{color:var(--text2);font-size:var(--fs-sm);font-weight:var(--fw-medium)}
+.nav-links a:hover{color:var(--accent);text-decoration:none}
+.nav-cta{background:var(--bg-blue);color:var(--accent);border:1px solid var(--accent);border-radius:var(--r-md);padding:6px 16px;font-size:var(--fs-sm);font-weight:var(--fw-medium)}
+.nav-cta:hover{background:var(--accent);color:var(--bg);text-decoration:none}
+.hero{max-width:900px;margin:0 auto;padding:80px 24px 60px;text-align:center}
+.hero-badge{display:inline-block;background:var(--bg-green);color:var(--green);border:1px solid rgba(63,185,80,0.3);border-radius:20px;padding:4px 14px;font-size:var(--fs-xs);font-weight:var(--fw-medium);margin-bottom:24px}
+.hero h1{font-size:var(--fs-2xl);font-weight:var(--fw-bold);line-height:1.15;margin-bottom:20px;background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:var(--fs-md);color:var(--text2);max-width:600px;margin:0 auto 32px;line-height:1.7}
+.hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-bottom:40px}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:var(--fs-xl);font-weight:var(--fw-bold);color:var(--accent)}
+.hero-stat-label{font-size:var(--fs-xs);color:var(--text2);text-transform:uppercase;letter-spacing:1px}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--bg);border:none;border-radius:var(--r-md);padding:12px 28px;font-size:var(--fs-base);font-weight:var(--fw-bold);cursor:pointer;transition:transform .15s}
+.btn-primary:hover{transform:translateY(-1px);text-decoration:none}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 28px;font-size:var(--fs-base);font-weight:var(--fw-medium)}
+.btn-secondary:hover{border-color:var(--accent);text-decoration:none}
+.section{max-width:900px;margin:0 auto;padding:60px 24px}
+.section-tag{font-size:var(--fs-xs);color:var(--accent);font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.section h2{font-size:var(--fs-xl);font-weight:var(--fw-bold);margin-bottom:32px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;transition:border-color .2s}
+.service-card:hover{border-color:var(--accent)}
+.service-icon{font-size:32px;margin-bottom:16px}
+.service-card h3{font-size:var(--fs-md);font-weight:var(--fw-bold);margin-bottom:8px}
+.service-card p{color:var(--text2);font-size:var(--fs-sm);line-height:1.6}
+.service-price{display:inline-block;margin-top:12px;background:var(--bg-green);color:var(--green);border-radius:var(--r-sm);padding:3px 10px;font-size:var(--fs-xs);font-weight:var(--fw-medium)}
+.case{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-bottom:16px}
+.case-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.case-badge{background:var(--bg-blue);color:var(--accent);border-radius:var(--r-sm);padding:3px 10px;font-size:var(--fs-xs);font-weight:var(--fw-medium)}
+.case-badge.green{background:var(--bg-green);color:var(--green)}
+.case-badge.orange{background:var(--bg-orange);color:var(--orange)}
+.case-badge.purple{background:var(--bg-purple);color:var(--purple)}
+.case h3{font-size:var(--fs-md);font-weight:var(--fw-bold)}
+.case p{color:var(--text2);font-size:var(--fs-sm);margin-top:8px}
+.case-result{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:24px;flex-wrap:wrap}
+.case-metric{text-align:center}
+.case-metric-num{font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--green)}
+.case-metric-label{font-size:var(--fs-xs);color:var(--text2)}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.stack-cat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px}
+.stack-cat h4{font-size:var(--fs-sm);color:var(--accent);font-weight:var(--fw-bold);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.stack-list{list-style:none}
+.stack-list li{padding:4px 0;font-size:var(--fs-sm);color:var(--text);border-bottom:1px solid var(--surface2)}
+.stack-list li:last-child{border-bottom:none}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:32px}
+.timeline-dot{position:absolute;left:-32px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.timeline-dot.green{background:var(--green)}
+.timeline-dot.purple{background:var(--purple)}
+.timeline-period{font-size:var(--fs-xs);color:var(--text2);font-weight:var(--fw-medium)}
+.timeline-item h4{font-size:var(--fs-base);font-weight:var(--fw-bold);margin:4px 0}
+.timeline-item p{color:var(--text2);font-size:var(--fs-sm)}
+.contact{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:48px;text-align:center}
+.contact h2{margin-bottom:16px}
+.contact p{color:var(--text2);margin-bottom:24px}
+.contact-channels{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.contact-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-md);padding:16px 24px;text-decoration:none !important;transition:border-color .2s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-card .icon{font-size:24px}
+.contact-card .label{font-size:var(--fs-xs);color:var(--text2);margin-top:4px}
+.contact-card .value{font-size:var(--fs-sm);color:var(--text);font-weight:var(--fw-medium)}
+.footer{border-top:1px solid var(--border);padding:24px;text-align:center;color:var(--text2);font-size:var(--fs-xs)}
+@media(max-width:640px){.hero h1{font-size:32px}.hero-stats{gap:24px}.nav-links{display:none}.section{padding:40px 16px}.contact{padding:32px 20px}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s ease-out}
+</style>
+</head>
+<body>
+<nav class="nav">
+<span class="nav-logo">AI</span>
+<div class="nav-links">
+<a href="#services">Услуги</a>
+<a href="#cases">Кейсы</a>
+<a href="#stack">Стек</a>
+<a href="#career">Опыт</a>
+<a href="#contact">Контакты</a>
+</div>
+<a class="nav-cta" href="#contact">Связаться</a>
+</nav>
+<section class="hero fade-up">
+<span class="hero-badge">Доступен для проектов</span>
+<h1>Внедрение AI в бизнес-процессы<br>и принятие оптимальных решений</h1>
+<p class="hero-sub">AI-архитектор и CIO с 25-летним опытом. Создаю AI-агентов, обучаю команды, внедряю LLM-решения в производство. Преподаватель IBS. Вайбкодер.</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="hero-stat-num">25</div><div class="hero-stat-label">лет опыта</div></div>
+<div class="hero-stat"><div class="hero-stat-num">40+</div><div class="hero-stat-label">AI-сервисов</div></div>
+<div class="hero-stat"><div class="hero-stat-num">100+</div><div class="hero-stat-label">проектов</div></div>
+<div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">агентских систем</div></div>
+</div>
+<div class="hero-cta">
+<a class="btn-primary" href="#contact">Обсудить проект</a>
+<a class="btn-secondary" href="#cases">Посмотреть кейсы</a>
+</div>
+</section>
+<section class="section" id="services">
+<div class="section-tag">УСЛУГИ</div>
+<h2>Чем могу помочь</h2>
+<div class="services-grid">
+<div class="service-card"><div class="service-icon">🤖</div><h3>Внедрение AI-агентов</h3><p>Проектирование и настройка автономных AI-агентов для бизнес-процессов. От обработки документов до принятия решений по закупкам и выплатам.</p><span class="service-price">от 50 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">📚</div><h3>Обучение и тренинги</h3><p>Корпоративные тренинги по AI для принятия решений. Курсы по промт-инжинирингу, вайбкодингу, агентным системам. Преподаватель IBS.</p><span class="service-price">от 200 000 ₽ / 2 дня</span></div>
+<div class="service-card"><div class="service-icon">📊</div><h3>Принятие оптимальных решений</h3><p>Параметрические модели выбора с весовыми коэффициентами и Байесовской статистикой. Принятие решений на любом объёме данных: закупки, подрядчики, стратегия.</p><span class="service-price">от 100 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">🏗️</div><h3>AI-стратегия и аудит</h3><p>Аудит бизнес-процессов, поиск точек приложения AI, дорожная карта цифровизации на 2-3 года. Оценка ROI и unit-экономики.</p><span class="service-price">от 150 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">⚡</div><h3>Быстрый прототип</h3><p>Рабочий прототип AI-решения за 1 день. От идеи до работающего локального приложения. Python, FastAPI, LLM API.</p><span class="service-price">от 30 000 ₽</span></div>
+<div class="service-card"><div class="service-icon">🔧</div><h3>LLM-пайплайны</h3><p>Обработка больших объемов данных с помощью LLM. RAG, fine-tuning, мультиагентные цепочки. Пайплайн 500K+ единиц контента в production.</p><span class="service-price">от 100 000 ₽</span></div>
+</div>
+</section>
+<section class="section" id="cases">
+<div class="section-tag">КЕЙСЫ</div>
+<h2>Результаты в цифрах</h2>
+<div class="case">
+<div class="case-header"><span class="case-badge green">Страхование</span><h3>AI-урегулирование убытков</h3></div>
+<p>Внедрение AI-системы автоматического анализа документов и принятия решений по страховым выплатам. Сокращение ручного труда, повышение точности выявления мошенничества.</p>
+<div class="case-result"><div class="case-metric"><div class="case-metric-num">-40%</div><div class="case-metric-label">ручного труда</div></div><div class="case-metric"><div class="case-metric-num">99.9%</div><div class="case-metric-label">точность</div></div></div>
+</div>
+<div class="case">
+<div class="case-header"><span class="case-badge">Ритейл</span><h3>LLM для B2B-маркетплейса</h3></div>
+<p>Автоматическая генерация описаний и характеристик товаров на B2B-маркетплейсе. LLM-пайплайн для обработки 500K+ единиц контента. Снижение стоимости подготовки контента.</p>
+<div class="case-result"><div class="case-metric"><div class="case-metric-num">500K+</div><div class="case-metric-label">SKU обработано</div></div><div class="case-metric"><div class="case-metric-num">5x</div><div class="case-metric-label">ускорение</div></div></div>
+</div>
+<div class="case">
+<div class="case-header"><span class="case-badge orange">Финтех</span><h3>AI-распознавание документов</h3></div>
+<p>Интеграция AI-сервиса распознавания паспортных данных в мобильный банк. Точность 99.9%, оформление заявки за секунды вместо минут ручного ввода.</p>
+<div class="case-result"><div class="case-metric"><div class="case-metric-num">99.9%</div><div class="case-metric-label">точность OCR</div></div><div class="case-metric"><div class="case-metric-num">-90%</div><div class="case-metric-label">время ввода</div></div></div>
+</div>
+<div class="case">
+<div class="case-header"><span class="case-badge purple">Телеком</span><h3>Фабрика идей МТС</h3></div>
+<p>Управление внутренней платформой сбора и обработки идей. B2C-монетизация VAS-платформ для аудитории свыше 1 млн. Доказанный экономический эффект $20M.</p>
+<div class="case-result"><div class="case-metric"><div class="case-metric-num">$20M</div><div class="case-metric-label">экономический эффект</div></div><div class="case-metric"><div class="case-metric-num">1M+</div><div class="case-metric-label">абонентов</div></div></div>
+</div>
+</section>
+<section class="section" id="stack">
+<div class="section-tag">ТЕХНОЛОГИИ</div>
+<h2>Технологический стек</h2>
+<div class="stack-grid">
+<div class="stack-cat"><h4>LLM и AI</h4><ul class="stack-list"><li>OpenAI / GPT-4</li><li>Anthropic Claude</li><li>Google Gemini</li><li>YandexGPT / GigaChat</li><li>Fine-tuning</li><li>RAG</li></ul></div>
+<div class="stack-cat"><h4>Агентные системы</h4><ul class="stack-list"><li>Hermes (9 систем)</li><li>OpenClaw</li><li>Antigravity</li><li>Claude Code</li><li>Cursor</li><li>OpenCode</li></ul></div>
+<div class="stack-cat"><h4>Разработка</h4><ul class="stack-list"><li>Python / FastAPI</li><li>Микросервисы</li><li>Docker</li><li>SQLite / PostgreSQL</li><li>n8n / Make</li><li>Supabase / Pinecone</li></ul></div>
+<div class="stack-cat"><h4>Управление</h4><ul class="stack-list"><li>Jira / Confluence</li><li>ERP (1C, Kingdee)</li><li>CRM (Битрикс24)</li><li>PMP / Agile / Scrum</li><li>Параметрические модели</li><li>Байесовская статистика</li></ul></div>
+</div>
+</section>
+<section class="section" id="career">
+<div class="section-tag">КАРЬЕРА</div>
+<h2>Опыт работы</h2>
+<div class="timeline">
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-period">2023 - наст.</div><h4>BIG / Мегатоп - Директор по AI-продуктам</h4><p>LLM-решения в B2B-маркетплейс. Оборот 100 млн руб. AI-генерация контента, криптоплатежи.</p></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-period">2022 - 2023</div><h4>Банк ДОМ.РФ - Руководитель продукта</h4><p>Переработка бэкенда продуктовой линейки, микросервисы. AI-распознавание документов (99.9%), миграция биометрии.</p></div>
+<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-period">2021 - 2022</div><h4>Сбер Страхование - AI-продукт</h4><p>AI-урегулирование убытков, автоматическое принятие решений по выплатам. Сокращение ручного труда на 40%.</p></div>
+<div class="timeline-item"><div class="timeline-dot green"></div><div class="timeline-period">2015 - 2021</div><h4>Система (АФК) - ИТ-директор / CIO</h4><p>Финблок, страхование, ERP на 1С. Бюджеты до 2 млрд руб. Команды до 50 человек.</p></div>
+<div class="timeline-item"><div class="timeline-dot green"></div><div class="timeline-period">2008 - 2015</div><h4>МТС - Product Owner VAS-платформ</h4><p>B2C-монетизация, Фабрика идей ($20M эффект). VAS-платформы для 1M+ абонентов. 6 лет.</p></div>
+<div class="timeline-item"><div class="timeline-dot purple"></div><div class="timeline-period">2003 - 2008</div><h4>Техносерв Консалтинг - Product Owner</h4><p>Корпоративные порталы, социальные сети, базы знаний. JIRA/Confluence. 5 лет.</p></div>
+<div class="timeline-item"><div class="timeline-dot purple"></div><div class="timeline-period">1999 - 2003</div><h4>Интелкон / Компэл / Элар - ИТ-руководитель</h4><p>Внедрение ИТ-систем, импортозамещение. ERP Kingdee (Китай). Автор изобретений, патентное право.</p></div>
+</div>
+</section>
+<section class="section" id="teaching">
+<div class="section-tag">ПРЕПОДАВАНИЕ</div>
+<h2>Обучение и наставничество</h2>
+<div class="services-grid">
+<div class="service-card"><div class="service-icon">🎓</div><h3>IBS: 2 курса</h3><p>«ИИ для принятия решений» и «Нейросети против Иллюзий». Корпоративные и открытые программы.</p></div>
+<div class="service-card"><div class="service-icon">🧠</div><h3>Вайбкодинг 12ч/сут</h3><p>Ежедневно 10+ часов с LLM. 9 агентских систем, ~40 AI-сервисов. Делюсь опытом на мастермайндах.</p></div>
+<div class="service-card"><div class="service-icon">💡</div><h3>~1000 рацпредложений</h3><p>Автор около 1000 рационализаторских предложений. 7 систем сбора идей. Рейтинг 10 000 практик в РЖД.</p></div>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="contact">
+<div class="section-tag">СВЯЗАТЬСЯ</div>
+<h2>Готов обсудить ваш проект</h2>
+<p>AI-агенты, обучение, консалтинг, прототипы. Отвечаю в течение часа.</p>
+<div class="contact-channels">
+<a class="contact-card" href="https://t.me/Alex1452"><div class="icon">💬</div><div class="label">Telegram</div><div class="value">@Alex1452</div></a>
+<a class="contact-card" href="https://wa.me/79645694970"><div class="icon">📱</div><div class="label">WhatsApp</div><div class="value">+7 (964) 569-49-70</div></a>
+<a class="contact-card" href="tel:+79645694970"><div class="icon">📞</div><div class="label">Телефон</div><div class="value">+7 (964) 569-49-70</div></a>
+</div>
+</div>
+</section>
+<footer class="footer"><p>Алексей Шеховцов - AI-архитектор - CIO - CAIO - Вайбкодер - 2026</p></footer>
+</body>
+</html>
